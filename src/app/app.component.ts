@@ -17,4 +17,12 @@ export class AppComponent {
     this.transactions.splice(index,1);
   }
 
+  getTotalAmount(){
+    let sum = 0;
+    for(let trs of this.transactions){
+      sum += trs.trsAmount;
+    }
+    return sum;
+  }
+
 }
