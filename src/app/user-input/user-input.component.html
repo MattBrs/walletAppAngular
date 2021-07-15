@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-8">
+    <label for="nameTxt" >Transaction name</label>
+    <input type="text" name="nameTxt" id="nameTxt" class="form-control" [(ngModel)]="transactionName">
+  </div>
+  <div class="col-md-4">
+    <label for="nameTxt" >Amount</label>
+    <input type="number" name="amountTxt" id="amountTxt" class="form-control" [(ngModel)]="transactionAmount">
+  </div>
+  <div class="col-xs-12">
+    <br>
+    <button class="btn btn-primary" [disabled]="transactionName === '' || transactionAmount === 0" (click)="addTransaction()">Add</button>
+  </div>
+</div>
