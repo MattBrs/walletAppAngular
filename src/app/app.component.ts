@@ -9,7 +9,7 @@ import { Transaction } from "./transaction.model";
 export class AppComponent {
   transactions: Transaction[] = [];
 
-  addTransaction(transaction: {trsName: string, trsAmount: number}){
+  addTransaction(transaction: Transaction){
     this.transactions.push(transaction);
     console.table(this.transactions);
   }
