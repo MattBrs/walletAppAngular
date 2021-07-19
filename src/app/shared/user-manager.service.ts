@@ -29,8 +29,12 @@ export class UserManagerService {
   }
 
   getTransaction(user: User): Transaction[]{
-    let index = this.users.indexOf(user);
-    return this.users[index].transactions;
+    if(user != null){
+      let index = this.users.indexOf(user);
+      return this.users[index].transactions;
+    }else{
+      // do nothing
+    }
   }
 
   selectUser(user: User) {
