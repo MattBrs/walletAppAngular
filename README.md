@@ -11,6 +11,7 @@ Per eseguire quest'applicazione:
 ```
 $ git clone https://github.com/MattBrs/walletAppAngular.git
 $ cd walletAppAngular
+$ npm install
 $ ng serve
 ```
 Per visualizzarla basta aprire un browser e digitare: localhost:4200
