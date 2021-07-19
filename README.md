@@ -17,3 +17,11 @@ $ ng serve
 ```
 Per visualizzarla basta aprire un browser e digitare: localhost:4200
 
+
+
+Immagini esempio:
+
+![Screenshot from 2021-07-19 15-56-03](https://user-images.githubusercontent.com/48391475/126171533-ee5e48a3-242a-418d-b29c-9aa68ef6cc80.png)
+
+![Screenshot from 2021-07-19 15-56-10](https://user-images.githubusercontent.com/48391475/126171583-cd84ab18-47b7-4af7-a310-ca68b55cb5b2.png)
+
