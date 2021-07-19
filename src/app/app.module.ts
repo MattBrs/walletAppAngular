@@ -13,7 +13,6 @@ import { UserComponent } from './users/user/user.component';
 import { UsersEditComponent } from './users/users-edit/users-edit.component';
 
 import { UserManagerService } from "./shared/user-manager.service";
-import {TransactionManagerService} from "./shared/transaction-manager.service";
 import { SelectCursorDirective } from './users/user/select-cursor.directive';
 
 const appRoutes: Routes = [
@@ -45,7 +44,7 @@ const appRoutes: Routes = [
     RouterModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [UserManagerService, TransactionManagerService],
+  providers: [UserManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {TransactionManagerService} from "../../shared/transaction-manager.service";
+import {UserManagerService} from "../../shared/user-manager.service";
+
 
 @Component({
   selector: 'app-user-input',
@@ -10,10 +11,15 @@ export class UserInputComponent implements OnInit {
   transactionName = '';
   transactionAmount = 0;
 
-  constructor(private trsManager: TransactionManagerService) { }
+  constructor(private userMng: UserManagerService) { }
 
-  addTransaction(){
-    this.trsManager.AddTransaction({trsName: this.transactionName, trsAmount: this.transactionAmount});
+  addTrs() {
+    this.userMng.addTransaction(
+      this.userMng.selectedUser, {
+        trsName: this.transactionName,
+        trsAmount: this.transactionAmount
+      }
+    );
   }
 
   ngOnInit(): void {

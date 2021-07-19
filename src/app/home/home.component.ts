@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {TransactionManagerService} from "../shared/transaction-manager.service";
 import {Transaction} from "../shared/transaction.model";
 import {User} from "../users/users.model";
+import {UserManagerService} from "../shared/user-manager.service";
 
 @Component({
   selector: 'app-home',
@@ -10,10 +10,10 @@ import {User} from "../users/users.model";
 })
 export class HomeComponent implements OnInit {
 
-  transactions: Transaction[];
-  user: User;
+  transactions: Transaction[] = [];
+  user: User = null;
 
-  constructor(private trsManager: TransactionManagerService) {
+  constructor(private userMng: UserManagerService) {
   }
 
 
@@ -30,20 +30,22 @@ export class HomeComponent implements OnInit {
   }
 
   checkIstance() {
-    return this.trsManager.selectedUser;
+    return this.userMng.selectedUser;
   }
 
   getUsername() {
-    return this.trsManager.getUser().username;
+    return this.userMng.selectedUser.username;
   }
 
   ngOnInit() {
-    this.transactions = this.trsManager.getTransactions();
-    this.trsManager.transactionAdded.subscribe(
-      (items: Transaction[]) => {
-        this.transactions = items;
+    this.user = this.userMng.selectedUser;
+    this.transactions = this.userMng.getTransaction(this.user);
+    this.userMng.trsAdded.subscribe(
+    (item: User) => {
+        this.transactions = item.transactions;
       }
     );
+
   }
 
 }

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../users.model";
-import {TransactionManagerService} from "../../shared/transaction-manager.service";
+import {UserManagerService} from "../../shared/user-manager.service";
 
 @Component({
   selector: 'app-user',
@@ -11,11 +11,11 @@ export class UserComponent implements OnInit {
 
   @Input('user')user : User;
 
-  constructor(private trsManager: TransactionManagerService) { }
+  constructor(private userMng: UserManagerService) { }
 
   userSelected() {
-    this.trsManager.selectUser(this.user);
-    //this.trsManager.selectTransactions(this.user.transactions);
+    this.userMng.selectUser(this.user);
+    console.log(this.userMng.getTransaction(this.user));
   }
 
   ngOnInit(): void {

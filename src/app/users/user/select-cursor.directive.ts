@@ -17,7 +17,6 @@ export class SelectCursorDirective implements OnInit {
     this.border = '1px solid white';
   }
   @HostListener('document:click', ['$event']) click(eventData: Event){
-    console.log('click')
     if(!this.selected && this.element.nativeElement.contains(eventData.target)){
       this.selected = true;
       this.background = 'lightgreen';
