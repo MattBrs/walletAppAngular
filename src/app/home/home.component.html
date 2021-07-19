@@ -1,0 +1,28 @@
+<div class="container" *ngIf="checkIstance()!=null; else selectAccount">
+  <h3>You are logged as {{getUsername()}}</h3>
+  <div class="row">
+    <div class="col-md-4">
+      <app-user-input></app-user-input>
+    </div>
+    <br>
+    <div class="col-md-8">
+      <app-transaction
+        *ngFor="let transaction of transactions; let i = index;"
+        [trs]="transaction"
+        (click)="onElementClick(i)"
+      ></app-transaction>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-8" style="text-align: center">
+      <fieldset *ngIf="transactions.length > 0">
+        <p>Total: {{getTotalAmount()}}$</p>
+      </fieldset>
+    </div>
+  </div>
+</div>
+<ng-template #selectAccount>
+  <h2>You must select an account before accessing this page!</h2>
+</ng-template>
+

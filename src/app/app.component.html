@@ -1,27 +1,7 @@
 <app-header></app-header>
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <app-user-input
-      (trsCreated)="addTransaction($event)"
-      ></app-user-input>
-    </div>
-    <br>
-    <div class="col-md-8">
-      <app-transaction
-        *ngFor="let transaction of transactions; let i = index;"
-        [trs]="transaction"
-        (click)="onElementClick(i)"
-      ></app-transaction>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-4"></div>
-    <div class="col-xs-8" style="text-align: center">
-      <fieldset *ngIf="transactions.length > 0">
-        <p>Total: {{getTotalAmount()}}$</p>
-      </fieldset>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>
 

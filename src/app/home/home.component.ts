@@ -1,23 +1,22 @@
-import {Component, OnInit} from '@angular/core';
-import { Transaction } from "./shared/transaction.model";
-import {TransactionManagerService} from "./shared/transaction-manager.service";
+import { Component, OnInit } from '@angular/core';
+import {TransactionManagerService} from "../shared/transaction-manager.service";
+import {Transaction} from "../shared/transaction.model";
+import {User} from "../users/users.model";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [TransactionManagerService]
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
 })
-export class AppComponent implements OnInit {
+export class HomeComponent implements OnInit {
+
   transactions: Transaction[];
+  user: User;
 
   constructor(private trsManager: TransactionManagerService) {
   }
 
-  addTransaction(transaction: Transaction){
-    this.transactions.push(transaction);
-    console.table(this.transactions);
-  }
+
   onElementClick(index: number){
     this.transactions.splice(index,1);
   }
@@ -28,6 +27,14 @@ export class AppComponent implements OnInit {
       sum += trs.trsAmount;
     }
     return sum;
+  }
+
+  checkIstance() {
+    return this.trsManager.selectedUser;
+  }
+
+  getUsername() {
+    return this.trsManager.getUser().username;
   }
 
   ngOnInit() {
