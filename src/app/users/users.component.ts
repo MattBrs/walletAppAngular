@@ -1,21 +1,23 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {User} from "./users.model";
 import {UserManagerService} from "../shared/user-manager.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-users',
   templateUrl: 'users.component.html',
   styleUrls: ['users.component.css'],
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, OnDestroy {
   users: User[];
+  usrSubscription: Subscription;
 
   constructor(private userMngService: UserManagerService) {
   }
 
   ngOnInit() {
     this.users = this.userMngService.getUsers();
-    this.userMngService.userAdded.subscribe(
+    this.usrSubscription = this.userMngService.userAdded.subscribe(
       (users: User[]) => {
         this.users = users;
         console.log(users);
@@ -23,5 +25,8 @@ export class UsersComponent implements OnInit {
     );
   }
 
+  ngOnDestroy() {
+    this.usrSubscription.unsubscribe();
+  }
 
 }

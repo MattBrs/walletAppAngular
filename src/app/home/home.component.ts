@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Transaction} from "../shared/transaction.model";
 import {User} from "../users/users.model";
 import {UserManagerService} from "../shared/user-manager.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   transactions: Transaction[] = [];
   user: User = null;
+  trsSubscription: Subscription;
 
   constructor(private userMng: UserManagerService) {
   }
@@ -40,12 +42,14 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.user = this.userMng.selectedUser;
     this.transactions = this.userMng.getTransaction(this.user);
-    this.userMng.trsAdded.subscribe(
+    this.trsSubscription = this.userMng.trsAdded.subscribe(
     (item: User) => {
         this.transactions = item.transactions;
       }
     );
-
   }
 
+  ngOnDestroy() {
+    this.trsSubscription.unsubscribe();
+  }
 }

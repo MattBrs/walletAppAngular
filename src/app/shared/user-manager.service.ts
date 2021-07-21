@@ -1,12 +1,13 @@
-import {Injectable, EventEmitter} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {User} from "../users/users.model";
 import {Transaction} from "./transaction.model";
+import {Subject} from "rxjs";
 
 @Injectable()
 export class UserManagerService {
   users: User[] = [];
-  userAdded = new EventEmitter<User[]>();
-  trsAdded = new EventEmitter<User>();
+  userAdded = new Subject<User[]>();
+  trsAdded = new Subject<User>();
   selectedUser: User = null;
   transactions: Transaction[] = [];
 
@@ -19,13 +20,13 @@ export class UserManagerService {
 
   addUser(item: User){
     this.users.push(item);
-    this.userAdded.emit(this.getUsers());
+    this.userAdded.next(this.getUsers());
   }
 
   addTransaction(user: User, trs: Transaction) {
     let index = this.users.indexOf(user);
     this.users[index].transactions.push(trs);
-    this.trsAdded.emit(this.users[index]);
+    this.trsAdded.next(this.users[index]);
   }
 
   getTransaction(user: User): Transaction[]{

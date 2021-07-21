@@ -14,17 +14,9 @@ import { UsersEditComponent } from './users/users-edit/users-edit.component';
 
 import { UserManagerService } from "./shared/user-manager.service";
 import { SelectCursorDirective } from './users/user/select-cursor.directive';
+import {AppRouterModule} from "./shared/app-router.module";
 
-const appRoutes: Routes = [
-  {
-    path: '',
-    component: UsersComponent
-  },
-  {
-    path: 'home',
-    component: HomeComponent
-  }
-];
+
 
 @NgModule({
   declarations: [
@@ -41,8 +33,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule,
-    RouterModule.forRoot(appRoutes)
+    AppRouterModule
   ],
   providers: [UserManagerService],
   bootstrap: [AppComponent]
