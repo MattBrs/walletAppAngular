@@ -25,7 +25,10 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.userMngService.fetchData();
   }
 
+
+
   ngOnInit() {
+    this.userMngService.autoFetch();
     this.users = this.userMngService.getUsers();
     this.usrSubscription = this.userMngService.userAdded.subscribe(
       (users: User[]) => {

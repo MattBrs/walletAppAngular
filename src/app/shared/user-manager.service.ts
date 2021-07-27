@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable, OnInit} from "@angular/core";
 import {User} from "../users/users.model";
 import {Transaction} from "./transaction.model";
 import {Subject} from "rxjs";
@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
 import {debugOutputAstAsTypeScript} from "@angular/compiler";
 
 @Injectable({providedIn: 'root'})
-export class UserManagerService {
+export class UserManagerService{
   users: User[] = [];
   userAdded = new Subject<User[]>();
   trsAdded = new Subject<User>();
@@ -62,8 +62,17 @@ export class UserManagerService {
         data => {
           this.users = data;
           this.userAdded.next(this.users);
+          localStorage.setItem('users', JSON.stringify(this.users));
+        }, error => {
+          alert(error.error.error);
         }
       );
+  }
+
+  autoFetch() {
+    if(localStorage.getItem('users')!= null){
+      this.users = <User[]>JSON.parse(localStorage.getItem('users'));
+    }
   }
 
 }
