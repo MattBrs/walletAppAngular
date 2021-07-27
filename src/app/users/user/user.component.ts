@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../users.model";
 import {UserManagerService} from "../../shared/user-manager.service";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-user',
@@ -27,11 +28,11 @@ export class UserComponent implements OnInit {
 
   @Input('user')user : User;
 
-  constructor(private userMng: UserManagerService) { }
+  constructor(private userMng: UserManagerService, private route: ActivatedRoute, private router: Router) { }
 
   userSelected() {
     this.userMng.selectUser(this.user);
-    console.log(this.userMng.getTransaction(this.user));
+    this.router.navigate(['/home', this.userMng.getUserId(this.user)]);
   }
 
   ngOnInit(): void {

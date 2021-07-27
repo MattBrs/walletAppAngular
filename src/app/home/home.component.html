@@ -1,4 +1,4 @@
-<div class="container" *ngIf="checkIstance()!=null; else selectAccount">
+<div class="container" *ngIf="user; else selectAccount">
   <h3>You are logged as {{getUsername()}}</h3>
   <div class="row">
     <div class="col-md-4">

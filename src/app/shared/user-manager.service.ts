@@ -20,6 +20,14 @@ export class UserManagerService{
     return this.users.slice();
   }
 
+  getUser(id: number){
+    return this.users[id];
+  }
+
+  getUserId(user: User) {
+    return this.users.indexOf(user);
+  }
+
   addUser(item: User){
     this.users.push(item);
     this.userAdded.next(this.getUsers());
@@ -61,8 +69,10 @@ export class UserManagerService{
       .subscribe(
         data => {
           this.users = data;
-          this.userAdded.next(this.users);
-          localStorage.setItem('users', JSON.stringify(this.users));
+          console.log(this.users);
+          this.userAdded.next(this.getUsers());
+          localStorage.setItem('users', JSON.stringify(this.getUsers()));
+
         }, error => {
           alert(error.error.error);
         }
@@ -72,6 +82,8 @@ export class UserManagerService{
   autoFetch() {
     if(localStorage.getItem('users')!= null){
       this.users = <User[]>JSON.parse(localStorage.getItem('users'));
+    }else{
+      this.fetchData();
     }
   }
 

@@ -13,7 +13,7 @@ export class UsersEditComponent implements OnInit {
   constructor(private userMngService: UserManagerService) { }
 
   onAddUser() {
-    this.userMngService.addUser(new User(this.name.nativeElement.value, []));
+    this.userMngService.addUser(new User( this.name.nativeElement.value, []));
   }
 
 

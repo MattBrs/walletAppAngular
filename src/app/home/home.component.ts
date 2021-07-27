@@ -3,6 +3,7 @@ import {Transaction} from "../shared/transaction.model";
 import {User} from "../users/users.model";
 import {UserManagerService} from "../shared/user-manager.service";
 import {Subscription} from "rxjs";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -14,8 +15,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   transactions: Transaction[] = [];
   user: User = null;
   trsSubscription: Subscription;
+  id:number = null;
 
-  constructor(private userMng: UserManagerService) {
+  constructor(private userMng: UserManagerService, private route: ActivatedRoute) {
   }
 
 
@@ -31,17 +33,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     return sum;
   }
 
-  checkIstance() {
-    return this.userMng.selectedUser;
+  getUsername() {
+    return this.userMng.getUser(this.id).username;
   }
 
-  getUsername() {
-    return this.userMng.selectedUser.username;
+  onCheck(){
+
   }
 
   ngOnInit() {
-    this.user = this.userMng.selectedUser;
-    this.transactions = this.userMng.getTransaction(this.user);
+    this.route.paramMap.subscribe(params => {
+      this.id = +params.get('id');
+      this.user = this.userMng.getUser(this.id);
+      this.transactions = this.userMng.getTransaction(this.user);
+    });
     this.trsSubscription = this.userMng.trsAdded.subscribe(
     (item: User) => {
         this.transactions = item.transactions;

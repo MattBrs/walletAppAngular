@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "transactions-70c68": {
+      "hosting": {
+        "provaCustomEvents": [
+          "transactions-70c68"
+        ]
+      }
+    }
+  }
+}
