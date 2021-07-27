@@ -3,39 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { UserInputComponent } from './home/user-input/user-input.component';
-import { TransactionComponent } from './home/transaction/transaction.component';
-import {FormsModule} from "@angular/forms";
-import {RouterModule, Routes} from "@angular/router";
-import { HomeComponent } from './home/home.component';
-import { UsersComponent } from "./users/users.component";
-import { UserComponent } from './users/user/user.component';
-import { UsersEditComponent } from './users/users-edit/users-edit.component';
-
-import { UserManagerService } from "./shared/user-manager.service";
-import { SelectCursorDirective } from './users/user/select-cursor.directive';
 import {AppRouterModule} from "./shared/app-router.module";
-
-
+import {HomeModule} from "./home/home.module";
+import {UsersModule} from "./users/users.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    UserInputComponent,
-    TransactionComponent,
-    HomeComponent,
-    UsersComponent,
-    UserComponent,
-    UsersEditComponent,
-    SelectCursorDirective
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    AppRouterModule
+    AppRouterModule,
+    HomeModule,
+    UsersModule,
+    HttpClientModule
   ],
-  providers: [UserManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

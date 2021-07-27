@@ -12,7 +12,17 @@ export class UsersComponent implements OnInit, OnDestroy {
   users: User[];
   usrSubscription: Subscription;
 
+
+
   constructor(private userMngService: UserManagerService) {
+  }
+
+  onSaveData() {
+    this.userMngService.sendData();
+  }
+
+  onFetchData() {
+    this.userMngService.fetchData();
   }
 
   ngOnInit() {
