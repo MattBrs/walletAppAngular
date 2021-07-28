@@ -8,7 +8,7 @@ const appRoutes: Routes = [
     loadChildren: () => import('./../users/users-router.module').then(m => m.UsersRouterModule)
   },
   {
-    path: 'home',
+    path: 'home/:id',
     loadChildren: () => import('./../home/home-router.module').then(m => m.HomeRouterModule)
   }
 ];
