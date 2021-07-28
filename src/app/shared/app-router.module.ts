@@ -1,5 +1,6 @@
 import {NgModule} from "@angular/core";
 import {PreloadAllModules, RouterModule, Routes} from "@angular/router";
+import { ShrinkPipe } from './shrink.pipe';
 
 const appRoutes: Routes = [
   {
@@ -14,7 +15,10 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules, initialNavigation: 'enabled'})],
-  exports: [RouterModule]
+    exports: [RouterModule, ShrinkPipe],
+  declarations: [
+    ShrinkPipe
+  ]
 })
 export class AppRouterModule {
 

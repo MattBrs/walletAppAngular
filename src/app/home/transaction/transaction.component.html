@@ -1,7 +1,7 @@
 <div class="col-xs-12">
   <div class="list-group" [@transAnimation]>
-    <div  class="list-group-item"  [ngStyle]="{backgroundColor: trs.trsAmount>0 ? 'lightgreen' : 'lightpink' }">
-      <h4 class="list-group-item-heading">Transaction:  <b>{{trs.trsName}}</b></h4>
+    <div  class="list-group-item" [ngClass]="{positive: trs.trsAmount>0, negative: trs.trsAmount<0}"  [ngStyle]="{backgroundColor: trs.trsAmount>0 ? 'lightgreen' : 'lightpink' }">
+      <h4 class="list-group-item-heading">Transaction:  <b>{{trs.trsName | shrink:20}}</b></h4>
       <p class="list-group-item-text">Amount: <b>{{trs.trsAmount}}$</b></p>
     </div>
   </div>

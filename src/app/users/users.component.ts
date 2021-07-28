@@ -2,11 +2,13 @@ import {Component, OnDestroy, OnInit} from "@angular/core";
 import {User} from "./users.model";
 import {UserManagerService} from "../shared/user-manager.service";
 import {Subscription} from "rxjs";
+import {componentTransition} from "../shared/animations";
 
 @Component({
   selector: 'app-users',
   templateUrl: 'users.component.html',
   styleUrls: ['users.component.css'],
+  animations: [componentTransition]
 })
 export class UsersComponent implements OnInit, OnDestroy {
   users: User[];

@@ -1,4 +1,4 @@
-<div class="container" *ngIf="user; else selectAccount">
+<div class="container" *ngIf="user; else selectAccount" [@componentTransition]>
   <h3>You are logged as {{getUsername()}}</h3>
   <div class="row">
     <div class="col-md-4">

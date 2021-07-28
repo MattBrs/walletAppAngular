@@ -4,6 +4,7 @@ import {TransactionComponent} from "./transaction/transaction.component";
 import {HomeComponent} from "./home.component";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {AppRouterModule} from "../shared/app-router.module";
 
 @NgModule({
   declarations: [
@@ -11,10 +12,11 @@ import {FormsModule} from "@angular/forms";
     TransactionComponent,
     HomeComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        AppRouterModule,
+    ],
   exports: []
 })
 export class HomeModule {

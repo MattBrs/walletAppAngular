@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Transaction} from "../../shared/transaction.model";
-import {animate, stagger, state, style, transition, trigger} from "@angular/animations";
+import {animate, query, stagger, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-transaction',
@@ -24,7 +24,17 @@ import {animate, stagger, state, style, transition, trigger} from "@angular/anim
           transform: 'translateX(100px)',
           opacity: 0
         }))
-      ])
+      ]),
+      // transition('void => *', [
+      //   query(':leave', [
+      //     stagger(100,[
+      //       style({
+      //         opacity: 0
+      //       }),
+      //       animate(300)
+      //     ]),
+      //   ]),
+      // ]),
     ])
   ]
 })

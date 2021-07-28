@@ -4,11 +4,13 @@ import {User} from "../users/users.model";
 import {UserManagerService} from "../shared/user-manager.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
+import {componentTransition} from "../shared/animations";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  animations: [componentTransition]
 })
 export class HomeComponent implements OnInit, OnDestroy {
 

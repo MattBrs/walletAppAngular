@@ -1,0 +1,7 @@
+.positive:hover{
+  border: 1px solid green;
+}
+
+.negative:hover{
+  border: 1px solid darkred;
+}
