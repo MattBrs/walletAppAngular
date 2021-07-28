@@ -6,13 +6,23 @@
     </div>
     <br>
     <div class="col-md-8">
-      <app-transaction
-        *ngFor="let transaction of transactions; let i = index;"
-        [trs]="transaction"
-        (click)="onElementClick(i)"
-      ></app-transaction>
+      <div class="row">
+        <div class="col-md-12">
+          <input class="form-control" type="text" [(ngModel)]="filterString"><br>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 15px">
+        <div class="col-md-12">
+          <app-transaction
+            *ngFor="let transaction of transactions  | filter:filterString:'trsName' ;  let i = index;"
+            [trs]="transaction"
+            (click)="onElementClick(i)"
+          ></app-transaction>
+        </div>
+      </div>
     </div>
   </div>
+  <br>
   <div class="row">
     <div class="col-xs-4"></div>
     <div class="col-xs-8" style="text-align: center">

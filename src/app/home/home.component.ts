@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   user: User = null;
   trsSubscription: Subscription;
   id:number = null;
+  filterString = '';
 
   constructor(private userMng: UserManagerService, private route: ActivatedRoute) {
   }
@@ -39,9 +40,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     return this.userMng.getUser(this.id).username;
   }
 
-  onCheck(){
-
-  }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {

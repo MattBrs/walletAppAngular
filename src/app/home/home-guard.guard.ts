@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  UrlTree
+} from '@angular/router';
 import { Observable } from 'rxjs';
 import {UserManagerService} from "../shared/user-manager.service";
 
@@ -15,8 +21,9 @@ export class HomeGuard implements CanActivate {
     if(this.userMngService.getUser(+route.paramMap.get('id'))){
       return true;
     }else{
-      alert('Utente non presente in memoria, fai un fetch dei dati');
+      //alert('Utente non presente in memoria, fai un fetch dei dati');
       return this.router.createUrlTree(['/']);
     }
   }
+
 }
